@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="edu.hkbu.comp.comp4087.assignment1.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/mallsFragment"
+        android:name="edu.hkbu.comp.comp4087.assignment1.ui.malls.MallsFragment"
+        android:label="@string/title_malls"
+        tools:layout="@layout/fragment_malls_list" />
+    <fragment
+        android:id="@+id/coinsFragment"
+        android:name="edu.hkbu.comp.comp4087.assignment1.ui.coins.CoinsFragment"
+        android:label="@string/title_coins"
+        tools:layout="@layout/fragment_coins_list" >
+        <action
+            android:id="@+id/action_coinsFragment_self"
+            app:destination="@id/coinsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="edu.hkbu.comp.comp4087.assignment1.UserFragment"
+        android:label="@string/title_user"
+        tools:layout="@layout/fragment_user" />
+</navigation>
