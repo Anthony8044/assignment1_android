@@ -1,14 +1,24 @@
 package edu.hkbu.comp.comp4087.assignment1.data
 
 object SampleData {
-    val DEPT = listOf(
-        Range("Computer Science", "COMP"),
-        Range("Communication Studies", "COMS")
+
+    val REGION = listOf(
+        MallsOne("HK Island"),
+        MallsOne("New Territories"),
+        MallsOne("Kowloon")
     )
-    val EVENT = listOf(
-        Inrange(1, "COMP Welcome speech", "COMP"),
-        Inrange(2, "COMP Exit speech", "COMP"),
-        Inrange(3, "TV Show", "COMS"),
-        Inrange(4, "TED Talk", "COMS")
+    val COINRANGES = listOf(
+        CoinsOne("Coins <= 300"),
+        CoinsOne("300 < Coins < 600"),
+        CoinsOne("Coins >= 600")
     )
+//    val MALLS = listOf(
+//        MallsOne("IFC Mall", "HK Island"),
+//        MallsOne("New Town Plaza", "New Territories"),
+//        MallsOne("Festival Walk", "Kowloon"),
+//        MallsOne("Elements", "HK Island"),
+//        MallsOne("Pacific Place", "Kowloon"),
+//        MallsOne("Times Square", "HK Island"),
+//        MallsOne("Harbour City", "Kowloon"),
+//    )
 }

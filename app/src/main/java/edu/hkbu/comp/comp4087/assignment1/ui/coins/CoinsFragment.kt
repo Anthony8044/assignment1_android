@@ -10,7 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import edu.hkbu.comp.comp4087.assignment1.R
+import edu.hkbu.comp.comp4087.assignment1.data.AppDatabase
 import edu.hkbu.comp.comp4087.assignment1.data.SampleData
+import edu.hkbu.comp.comp4087.assignment1.ui.malls.MallsOneRecyclerViewAdapter
+import edu.hkbu.comp.comp4087.assignment1.ui.malls.MallsTwoRecyclerViewAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * A fragment representing a list of Items.
@@ -41,12 +47,36 @@ class CoinsFragment : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
 //                adapter = CoinsRecyclerViewAdapter(PlaceholderContent.ITEMS)
-                val dept_id = arguments?.getString("dept_id")
-                if (dept_id == null)
-                    adapter = InrangeRecyclerViewAdapter(SampleData.DEPT)
-                else {
-                    adapter = CoinsRecyclerViewAdapter(SampleData.EVENT.filter { it.deptId == dept_id })
-                    //to enable the back-arrow in the ActionBar.
+                val ranges = arguments?.getString("ranges")
+                val thisrange = ranges.toString()
+                if (ranges == null)
+                    adapter = CoinsOneRecyclerViewAdapter(SampleData.COINRANGES)
+                else if(thisrange == "Coins <= 300"){
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val dao = AppDatabase.getInstance(context).couponDao()
+                        val filteredRanges = dao.findLessThan()
+                        CoroutineScope(Dispatchers.Main).launch {
+                            adapter = CoinsTwoRecyclerViewAdapter(filteredRanges)
+                        }
+                    }
+                    (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                }else if(thisrange == "300 < Coins < 600"){
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val dao = AppDatabase.getInstance(context).couponDao()
+                        val filteredRanges = dao.findInBetween()
+                        CoroutineScope(Dispatchers.Main).launch {
+                            adapter = CoinsTwoRecyclerViewAdapter(filteredRanges)
+                        }
+                    }
+                    (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                } else{
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val dao = AppDatabase.getInstance(context).couponDao()
+                        val filteredRanges = dao.findMoreThan()
+                        CoroutineScope(Dispatchers.Main).launch {
+                            adapter = CoinsTwoRecyclerViewAdapter(filteredRanges)
+                        }
+                    }
                     (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 }
             }

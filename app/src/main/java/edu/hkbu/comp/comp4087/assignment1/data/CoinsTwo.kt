@@ -1,6 +1,6 @@
 package edu.hkbu.comp.comp4087.assignment1.data
 
-data class Inrange (
+data class CoinsTwo (
     val id: Int,
     val title: String,
     val deptId: String,

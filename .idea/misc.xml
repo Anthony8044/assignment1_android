@@ -6,8 +6,12 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24468085106382978" />
         <entry key="app/src/main/res/layout/fragment_coins_item.xml" value="0.2644927536231884" />
         <entry key="app/src/main/res/layout/fragment_coins_list.xml" value="0.2644927536231884" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24468085106382978" />
+        <entry key="app/src/main/res/layout/fragment_home_item.xml" value="0.2586050724637681" />
+        <entry key="app/src/main/res/layout/fragment_home_list.xml" value="0.2164855072463768" />
         <entry key="app/src/main/res/layout/fragment_malls_item.xml" value="0.24468085106382978" />
         <entry key="app/src/main/res/layout/fragment_malls_list.xml" value="0.2644927536231884" />
+        <entry key="app/src/main/res/layout/fragment_user.xml" value="0.2586050724637681" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.49538461538461537" />
       </map>
     </option>

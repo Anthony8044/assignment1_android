@@ -7,12 +7,12 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import edu.hkbu.comp.comp4087.assignment1.R
-import edu.hkbu.comp.comp4087.assignment1.data.Range
+import edu.hkbu.comp.comp4087.assignment1.data.CoinsOne
 import edu.hkbu.comp.comp4087.assignment1.databinding.FragmentCoinsItemBinding
 
-class InrangeRecyclerViewAdapter(
-    private val values: List<Range>
-) : RecyclerView.Adapter<InrangeRecyclerViewAdapter.ViewHolder>() {
+class CoinsOneRecyclerViewAdapter(
+    private val values: List<CoinsOne>
+) : RecyclerView.Adapter<CoinsOneRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -28,8 +28,7 @@ class InrangeRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.name
+        holder.idView.text = item.Ranges
     }
 
     override fun getItemCount(): Int = values.size
@@ -42,7 +41,7 @@ class InrangeRecyclerViewAdapter(
             binding.root.setOnClickListener {
                 it.findNavController().navigate(
                     R.id.action_coinsFragment_self,
-                    bundleOf(Pair("dept_id", idView.text.toString()))
+                    bundleOf(Pair("ranges", idView.text.toString()))
                 )
             } }
     }

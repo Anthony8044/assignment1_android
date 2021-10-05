@@ -3,10 +3,12 @@ package edu.hkbu.comp.comp4087.assignment1.ui.malls
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import com.squareup.picasso.Picasso
-import edu.hkbu.comp.comp4087.assignment1.data.malls
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
+import edu.hkbu.comp.comp4087.assignment1.R
+import edu.hkbu.comp.comp4087.assignment1.data.CoinsOne
+import edu.hkbu.comp.comp4087.assignment1.data.MallsOne
 import edu.hkbu.comp.comp4087.assignment1.databinding.FragmentMallsItemBinding
 import edu.hkbu.comp.comp4087.assignment1.ui.malls.placeholder.PlaceholderContent.PlaceholderItem
 
@@ -14,9 +16,9 @@ import edu.hkbu.comp.comp4087.assignment1.ui.malls.placeholder.PlaceholderConten
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class MallsRecyclerViewAdapter(
-    private val values: List<malls>
-) : RecyclerView.Adapter<MallsRecyclerViewAdapter.ViewHolder>() {
+class MallsOneRecyclerViewAdapter(
+    private val values: List<MallsOne>
+) : RecyclerView.Adapter<MallsOneRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -32,22 +34,21 @@ class MallsRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.titleTextView.text = item.title
-        holder.detailTextView.text = item.detail
-        Picasso.get().load(item.image).into(holder.mallsImageView)
+        holder.idView.text = item.region
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(binding: FragmentMallsItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val mallsImageView: ImageView = binding.mallsImageView
-        val titleTextView: TextView = binding.titleTextView
-        val detailTextView: TextView = binding.detailTextView
-
-        override fun toString(): String {
-            return super.toString() + " '" + detailTextView.text + "'"
-        }
+        val idView: TextView = binding.itemNumber
+        init {
+            binding.root.setOnClickListener {
+                it.findNavController().navigate(
+                    R.id.action_mallsFragment_self,
+                    bundleOf(Pair("region", idView.text.toString()))
+                )
+            } }
     }
 
 }

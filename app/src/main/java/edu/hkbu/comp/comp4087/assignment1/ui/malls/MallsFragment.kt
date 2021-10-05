@@ -8,9 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import edu.hkbu.comp.comp4087.assignment1.R
-import edu.hkbu.comp.comp4087.assignment1.data.malls
-import edu.hkbu.comp.comp4087.assignment1.ui.malls.placeholder.PlaceholderContent
+import edu.hkbu.comp.comp4087.assignment1.data.AppDatabase
+import edu.hkbu.comp.comp4087.assignment1.data.SampleData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
 
 /**
  * A fragment representing a list of Items.
@@ -40,13 +45,23 @@ class MallsFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                val mallsImage = resources.getStringArray(R.array.mallsImage)
-                val mallsTitle = resources.getStringArray(R.array.mallsTitle)
-                val mallsDetail = resources.getStringArray(R.array.mallsDetail)
-                val mallslist = mutableListOf<malls>()
-                for (i in 0..(mallsDetail.size - 1))
-                    mallslist.add(malls(mallsImage[i], mallsTitle[i], mallsDetail[i]))
-                adapter = MallsRecyclerViewAdapter(mallslist)
+//                adapter = CoinsRecyclerViewAdapter(PlaceholderContent.ITEMS)
+                val region = arguments?.getString("region")
+                if (region == null)
+                    adapter = MallsOneRecyclerViewAdapter(SampleData.REGION)
+                else {
+                    val malls = region.toString()
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val dao = AppDatabase.getInstance(context).couponDao()
+                        val filteredmalls = dao.findMall(malls)
+                        CoroutineScope(Dispatchers.Main).launch {
+                            adapter = MallsTwoRecyclerViewAdapter(filteredmalls)
+                        }
+                    }
+//                    adapter = MallsTwoRecyclerViewAdapter(SampleData.EVENT.filter { it.deptId == dept_id })
+                    //to enable the back-arrow in the ActionBar.
+                    (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                }
             }
         }
         return view
