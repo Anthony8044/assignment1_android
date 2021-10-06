@@ -2,6 +2,7 @@ package edu.hkbu.comp.comp4087.assignment1
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -32,6 +33,11 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    fun couponClick(view : View) {
+        findNavController(R.id.nav_host_fragment_activity_main)
+            .navigate(R.id.action_navigation_home_to_details)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

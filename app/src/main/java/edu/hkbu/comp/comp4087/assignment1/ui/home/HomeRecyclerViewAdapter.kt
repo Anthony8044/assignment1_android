@@ -33,8 +33,9 @@ class HomeRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.titleTextView.text = item.title
-        holder.detailTextView.text = item.detail
+        holder.titleTextView.text = item.restaurant
+        holder.detailTextView.text = item.title
+        holder.coinsTextView.text = item.coins
         if (item.image != "")
             Picasso.get().load(item.image).into(holder.mallsImageView)
         else
@@ -49,6 +50,8 @@ class HomeRecyclerViewAdapter(
         val mallsImageView: ImageView = binding.mallsImageView
         val titleTextView: TextView = binding.titleTextView
         val detailTextView: TextView = binding.detailTextView
+        val coinsTextView: TextView = binding.coinsTextView
+
 
         override fun toString(): String {
             return super.toString() + " '" + detailTextView.text + "'"
