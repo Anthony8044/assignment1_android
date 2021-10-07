@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    fun couponClick(view : View) {
-        findNavController(R.id.nav_host_fragment_activity_main)
-            .navigate(R.id.action_navigation_home_to_details)
-    }
+//    fun couponClick(view : View) {
+//        findNavController(R.id.nav_host_fragment_activity_main)
+//            .navigate(R.id.action_navigation_home_to_details)
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         findNavController(R.id.nav_host_fragment_activity_main).popBackStack()

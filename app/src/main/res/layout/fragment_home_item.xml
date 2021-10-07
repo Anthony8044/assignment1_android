@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/customborder"
-    android:clickable="true"
-    android:onClick="couponClick"
+    android:clickable="false"
     android:orientation="vertical">
 
     <ImageView
@@ -53,7 +52,7 @@
 
         <TextView
             android:id="@+id/coinsTextView"
-            android:layout_width="350dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="TextView"

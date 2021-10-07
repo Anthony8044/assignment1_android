@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso
 import edu.hkbu.comp.comp4087.assignment1.R
 import edu.hkbu.comp.comp4087.assignment1.data.AllCoupons
 import edu.hkbu.comp.comp4087.assignment1.data.AppDatabase
+import edu.hkbu.comp.comp4087.assignment1.databinding.FragmentDetailsBinding
 import edu.hkbu.comp.comp4087.assignment1.databinding.FragmentHomeItemBinding
 import edu.hkbu.comp.comp4087.assignment1.ui.home.placeholder.PlaceholderContent.PlaceholderItem
 import edu.hkbu.comp.comp4087.assignment1.ui.malls.MallsTwoRecyclerViewAdapter
@@ -24,14 +25,14 @@ import kotlinx.coroutines.launch
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class HomeRecyclerViewAdapter(
+class DetailsRecyclerViewAdapter(
     private val values: List<AllCoupons>
-) : RecyclerView.Adapter<HomeRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<DetailsRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
-            FragmentHomeItemBinding.inflate(
+            FragmentDetailsBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -44,6 +45,8 @@ class HomeRecyclerViewAdapter(
         val item = values[position]
         holder.titleTextView.text = item.restaurant
         holder.detailTextView.text = item.title
+        holder.mallTextView.text = item.mall
+        holder.dateTextView3.text = item.title
         holder.coinsTextView.text = item.coins
         if (item.image != "")
             Picasso.get().load(item.image).into(holder.mallsImageView)
@@ -55,23 +58,18 @@ class HomeRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentHomeItemBinding) :
+    inner class ViewHolder(binding: FragmentDetailsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val mallsImageView: ImageView = binding.mallsImageView
         val titleTextView: TextView = binding.titleTextView
         val detailTextView: TextView = binding.detailTextView
+        val mallTextView: TextView = binding.mallTextView
+        val dateTextView3: TextView = binding.dateTextView3
         val coinsTextView: TextView = binding.coinsTextView
 
-        init {
-            binding.root.setOnClickListener {
-                it.findNavController().navigate(
-                    R.id.action_navigation_home_to_detailsFragment,
-                    bundleOf(Pair("mallName", titleTextView.text.toString()))
-                )
-            } }
-//            override fun toString(): String {
-//                return super.toString() + " '" + titleTextView.text + "'"
-//            }
+            override fun toString(): String {
+                return super.toString() + " '" + titleTextView.text + "'"
+            }
 
     }
 

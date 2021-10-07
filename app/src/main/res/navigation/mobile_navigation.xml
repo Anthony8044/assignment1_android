@@ -11,8 +11,8 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home_list" >
         <action
-            android:id="@+id/action_navigation_home_to_details"
-            app:destination="@id/details" />
+            android:id="@+id/action_navigation_home_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/mallsFragment"
@@ -38,9 +38,9 @@
         android:label="@string/title_user"
         tools:layout="@layout/fragment_user" />
     <fragment
-        android:id="@+id/details"
-        android:name="edu.hkbu.comp.comp4087.assignment1.Details"
-        android:label="details_fragment"
-        tools:layout="@layout/details_fragment" />
+        android:id="@+id/detailsFragment"
+        android:name="edu.hkbu.comp.comp4087.assignment1.ui.home.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
 
 </navigation>

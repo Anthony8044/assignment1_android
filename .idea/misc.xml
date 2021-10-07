@@ -9,6 +9,8 @@
         <entry key="app/src/main/res/layout/fragment_coins_item.xml" value="0.2644927536231884" />
         <entry key="app/src/main/res/layout/fragment_coins_list.xml" value="0.2644927536231884" />
         <entry key="app/src/main/res/layout/fragment_details.xml" value="0.2586050724637681" />
+        <entry key="app/src/main/res/layout/fragment_details_item.xml" value="0.2261904761904762" />
+        <entry key="app/src/main/res/layout/fragment_details_list.xml" value="0.2261904761904762" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.24468085106382978" />
         <entry key="app/src/main/res/layout/fragment_home_item.xml" value="0.2586050724637681" />
         <entry key="app/src/main/res/layout/fragment_home_list.xml" value="0.2164855072463768" />
