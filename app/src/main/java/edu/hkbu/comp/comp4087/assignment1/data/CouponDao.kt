@@ -15,8 +15,8 @@ interface CouponDao {
     suspend fun findInBetween(): List<AllCoupons>
     @Query("Select * from allCoupons where coins >= '600' ")
     suspend fun findMoreThan(): List<AllCoupons>
-    @Query("Select * from allCoupons where mall = :mall")
-    suspend fun findid(mall:String): List<AllCoupons>
+    @Query("Select * from allCoupons where id = :id")
+    suspend fun findid(id:String): List<AllCoupons>
     @Delete
     suspend fun delete(vararg allCoupons: AllCoupons)
     @Update

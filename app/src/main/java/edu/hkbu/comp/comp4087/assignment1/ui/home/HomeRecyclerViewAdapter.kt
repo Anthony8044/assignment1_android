@@ -45,6 +45,7 @@ class HomeRecyclerViewAdapter(
         holder.titleTextView.text = item.restaurant
         holder.detailTextView.text = item.title
         holder.coinsTextView.text = item.coins
+        holder.mallidTextView.text = item.id
         if (item.image != "")
             Picasso.get().load(item.image).into(holder.mallsImageView)
         else
@@ -61,17 +62,23 @@ class HomeRecyclerViewAdapter(
         val titleTextView: TextView = binding.titleTextView
         val detailTextView: TextView = binding.detailTextView
         val coinsTextView: TextView = binding.coinsTextView
+        val mallidTextView: TextView = binding.mallidTextView
 
         init {
-            binding.root.setOnClickListener {
+            binding.root.setOnClickListener{
                 it.findNavController().navigate(
                     R.id.action_navigation_home_to_detailsFragment,
-                    bundleOf(Pair("mallName", titleTextView.text.toString()))
+                    bundleOf(Pair("id", mallidTextView.text.toString()))
                 )
-            } }
-//            override fun toString(): String {
-//                return super.toString() + " '" + titleTextView.text + "'"
-//            }
+            }
+        }
+
+//        val idView: TextView = binding.itemNumber
+//        val contentView: TextView = binding.content
+
+        override fun toString(): String {
+            return super.toString() + " '" + titleTextView.text + "'"
+        }
 
     }
 

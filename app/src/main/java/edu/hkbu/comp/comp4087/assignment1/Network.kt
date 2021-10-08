@@ -1,9 +1,12 @@
 package edu.hkbu.comp.comp4087.assignment1
 
+
 import java.net.HttpURLConnection
 import java.net.URL
 
+
 class Network {
+
     companion object {
         suspend fun getTextFromNetwork(url: String) : String {
             val builder = StringBuilder()
@@ -16,4 +19,5 @@ class Network {
             return builder.toString()
         }
     }
+
 }

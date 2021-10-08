@@ -13,4 +13,7 @@ data class AllCoupons (
     val coins: String,
     val detail: String,
     val region: String,
-) { } //the curly braces can be omitted.
+    val quota: String,
+    val expirydate: String,
+
+    ) { } //the curly braces can be omitted.

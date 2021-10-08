@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_mallsFragment_self"
             app:destination="@id/mallsFragment" />
+        <action
+            android:id="@+id/action_mallsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/coinsFragment"
@@ -31,16 +34,15 @@
         <action
             android:id="@+id/action_coinsFragment_self"
             app:destination="@id/coinsFragment" />
+        <action
+            android:id="@+id/action_coinsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/userFragment"
-        android:name="edu.hkbu.comp.comp4087.assignment1.UserFragment"
-        android:label="@string/title_user"
-        tools:layout="@layout/fragment_user" />
+
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="edu.hkbu.comp.comp4087.assignment1.ui.home.DetailsFragment"
-        android:label="fragment_details"
+        android:name="edu.hkbu.comp.comp4087.assignment1.DetailsFragment"
+        android:label="Details"
         tools:layout="@layout/fragment_details" />
 
 </navigation>
